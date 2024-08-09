@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+
+  
+<body class="body">
+
+
+    
+    <h1><center>TABLE GENERATE</center></h1>
+    <div class="row">
+
+        <input type="number" id="numberInput" placeholder=  " Enter Number...">
+        <button class="btn"onclick="generateTable()">  <b> Generate Table..</b></button>
+
+    </div>
+    
+        <div id="tablesContainer"></div>
+    
+        <script>
+            function generateTable() {
+                
+                let number = document.getElementById('numberInput').value;
+    
+                
+                if (document.getElementById(`table-${number}`)) {
+                    alert(`Table for ${number} already exists.`);
+                    return;
+                }
+    
+                let tableDiv = document.createElement('div');
+                tableDiv.id = `table-${number}`;
+    
+             
+                let table = document.createElement('table');
+                table.border = '1';
+    
+                for (let i = 1; i <= 10; i++) {
+                    let row = document.createElement('tr');
+                    let cell = document.createElement('td');
+                    cell.innerText = `${number} x ${i} = ${number * i}`;
+                    row.appendChild(cell);
+                    table.appendChild(row);
+                }
+    
+                let title = document.createElement('h3');
+                title.innerText = `Table of ${number}`;
+                tableDiv.appendChild(title);
+    
+                
+                tableDiv.appendChild(table);
+    
+                document.getElementById('tablesContainer').appendChild(tableDiv);
+            }
+        </script>
+                                            
+
+</body>
+</html>
